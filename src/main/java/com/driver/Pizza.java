@@ -10,9 +10,9 @@ public class Pizza {
         this.isVeg = isVeg;
         // your code goes here
         if(isVeg==true)
-            this.price=300;
+            price=300;
         else
-            this.price=400;
+            price=400;
     }
 
     public int getPrice(){
@@ -23,25 +23,26 @@ public class Pizza {
 
     public void addExtraCheese(){
         // your code goes here
-        this.price=price+80;
+        if(price==300)
+        price=price+80;
     }
 
     public void addExtraToppings(){
         // your code goes here
-        if(isVeg==true)
-            this.price=price+70;
-        else
-            this.price=price+120;
+        if(price == 380 && isVeg==true)
+            price=price+70;
+        else if(price == 480 && isVeg==false)
+            price=price+120;
     }
 
     public void addTakeaway(){
         // your code goes here
-        this.price=price+20;
+        price=price+20;
     }
 
     public String getBill(){
         // your code goes here
-        bill = String.valueOf(this.price);
+        bill = String.valueOf(price);
         return this.bill;
     }
 }
