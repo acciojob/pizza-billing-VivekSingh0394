@@ -23,15 +23,15 @@ public class Pizza {
 
     public void addExtraCheese(){
         // your code goes here
-        if(price==300)
+       // if(price==300)
         price=price+80;
     }
 
     public void addExtraToppings(){
         // your code goes here
-        if(price == 380 && isVeg==true)
+        if(isVeg==true)
             price=price+70;
-        else if(price == 480 && isVeg==false)
+        else if(isVeg==false)
             price=price+120;
     }
 
