@@ -5,14 +5,32 @@ public class Pizza {
     private int price;
     private Boolean isVeg;
     private String bill;
+     private int extraCheesePrice;
+     Private int extraToppingsPrice;
+     private int paperBagPrice;
+     private boolean isExtraCheesesAdded=false;
+     private boolean isExtraToppingAdded=false;
 
-    public Pizza(Boolean isVeg){
+     private boolean isPaperBagAdded=false;
+     private boolean isBillGenerated=false;
+
+     public Pizza(Boolean isVeg){
         this.isVeg = isVeg;
         // your code goes here
-        if(isVeg==true)
-            this.price=300;
-        else
-            this.price=400;
+         this.extraCheesePrice=80;
+         this.paperBagPrice=20;
+
+         if(isVeg==true)
+         {
+             this.extraToppingsPrice=70;
+             this.price=300;
+         }
+         else {
+             this.extraToppingsPrice=120;
+             this.price=400;
+         }
+         this.bill= "Base Price Of The Pizza: "+this.price+"\n";
+
     }
 
     public int getPrice(){
@@ -23,27 +41,52 @@ public class Pizza {
 
     public void addExtraCheese(){
         // your code goes here
-       // if(price==300)
-        price=price+80;
+     if(isExtraCheesesAdded==false)
+     {
+         this.price=this.price+this.extraCheesePrice;
+         isExtraCheesesAdded=true;
+     }
+
     }
 
     public void addExtraToppings(){
         // your code goes here
-        if(isVeg==true)
-            price=price+70;
-        else if(isVeg==false)
-            price=price+120;
+        if(isExtraToppingAdded==false)
+        {
+
+                this.price=this.price+this.extraToppingsPrice;
+                isExtraToppingAdded=true;
+
+        }
+
     }
 
     public void addTakeaway(){
         // your code goes here
-        price=price+20;
+        if(isPaperBagAdded==false)
+        {
+            this.price=this.price+this.paperBagPrice;
+            isPaperBagAdded=true;
+        }
+
     }
 
     public String getBill(){
         // your code goes here
-        bill = String.valueOf(price);
-        price=0;
+      if(isBillGenerated==false)
+      {
+          isBillGenerated=true;
+          if(isExtraCheesesAdded==true)
+         this.bill=this.bill + "Extra Cheese Added: "+this.extraCheesePrice+"\n";
+
+          if(isExtraToppingAdded==true)
+              this.bill=this.bill + "Extra Toppings Added: "+this.extraToppingsPrice+"\n";
+         if(isPaperBagAdded==true)
+             this.bill=this.bill +"Paperbag Added: "+this.paperBagPrice+"\n";
+
+          this.bill=this.bill+"Total Price: "+this.price+"\n";
+
+      }
         return this.bill;
     }
 }
